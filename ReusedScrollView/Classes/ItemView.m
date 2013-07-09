@@ -10,22 +10,20 @@
 
 @implementation ItemView
 
-- (ItemView *)allocItemView
-{
-//    int from = 1;
-//    int to = 2147483647;
-//    int randNumber = arc4random()%(to - from + 1);
-//    return  (int)(from + randNumber);
-    CGRect tempFrame = (CGRect){};
-}
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.backgroundColor = [self randomColor];
+        self.layer.cornerRadius = 3.0;
     }
     return self;
+}
+
+- (UIColor *)randomColor
+{
+    return [UIColor colorWithRed:arc4random()%10 / 10. green:arc4random()%10 /10. blue:arc4random()%10 /10. alpha:1];
 }
 
 /*

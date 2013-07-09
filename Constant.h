@@ -1,4 +1,7 @@
 
 
 
-#define kWaterItemWidth     90.
+#define kWaterItemWidth     200
+
+#define kItemMinHeight      200
+#define kItemMaxHeight      350

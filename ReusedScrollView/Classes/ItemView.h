@@ -10,6 +10,4 @@
 
 @interface ItemView : UIView
 
-- (ItemView *)allocItemViewWithOrignalPoint:(CGPoint)point;
-
 @end

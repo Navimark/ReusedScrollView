@@ -25,12 +25,8 @@
     [self.window makeKeyAndVisible];
     
     HomeViewController *homeViewController = [[HomeViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:homeViewController];
-    [nav.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
-    self.window.rootViewController = nav;
+    self.window.rootViewController = homeViewController;
     [homeViewController release];
-    [nav release];
-    
     
     return YES;
 }
