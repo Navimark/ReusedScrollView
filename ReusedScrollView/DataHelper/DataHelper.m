@@ -16,10 +16,10 @@
     [view.layer setBorderColor:color.CGColor];
 }
 
-+ (CGRect)randomRectWithOrignalPoint:(CGPoint)point
++ (CGRect)randomRect
 {
     CGFloat itemHeigt = arc4random()%(kItemMaxHeight - kItemMinHeight + 1) + kItemMinHeight;
-    return (CGRect){point,(CGSize){kWaterItemWidth,itemHeigt}};
+    return (CGRect){{0,0},(CGSize){kWaterItemWidth,itemHeigt}};
 }
 
 @end

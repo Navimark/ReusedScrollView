@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@interface UIScrollView (esxtraVariable)
+
+@property (nonatomic , retain) NSString *didVisibleFrameChanged;
+
+@end
+
 @interface HomeViewController : UIViewController <UIScrollViewDelegate>
 
 @end

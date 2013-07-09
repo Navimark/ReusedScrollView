@@ -12,6 +12,6 @@
 
 + (void)drawBounder:(UIView *)view bounderColor:(UIColor *)color;
 
-+ (CGRect)randomRectWithOrignalPoint:(CGPoint)point;
++ (CGRect)randomRect;
 
 @end

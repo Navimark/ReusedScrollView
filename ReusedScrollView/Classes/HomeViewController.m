@@ -8,6 +8,24 @@
 
 #import "HomeViewController.h"
 #import "ItemView.h"
+#include <objc/runtime.h>
+
+NSString const *const kkNewPropertyKey = @"MyButtonIndexPropertyKey";
+@implementation UIScrollView (esxtraVariable)
+
+@dynamic didVisibleFrameChanged;
+
+- (void)setDidVisibleFrameChanged:(NSString *)didVisibleFrameChanged
+{
+    objc_setAssociatedObject(self,kkNewPropertyKey,didVisibleFrameChanged,OBJC_ASSOCIATION_RETAIN);
+}
+
+- (NSString *)didVisibleFrameChanged
+{
+    return objc_getAssociatedObject(self, kkNewPropertyKey);
+}
+
+@end
 
 @interface HomeViewController ()
 {
@@ -38,6 +56,7 @@
 
 - (void)dealloc
 {
+    [_mainScrollView removeObserver:nil forKeyPath:@"didVisibleFrameChanged"];
     [_mainScrollView release];
     [super dealloc];
 }
@@ -54,10 +73,7 @@
 - (void)loadView
 {
     [super loadView];
-    [DataHelper drawBounder:self.mainScrollView bounderColor:[UIColor yellowColor]];
     [self.view addSubview:self.mainScrollView];
-//    NSLog(@"self.mainScrollView = %@",self.mainScrollView);
-    NSLog(@"self.view = %@",self.view);
 }
 
 - (void)viewDidLoad
@@ -65,10 +81,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.navigationItem.title = @"重用";
-    ItemView *shit = [[ItemView alloc] initWithFrame:[DataHelper randomRectWithOrignalPoint:CGPointMake(0, 0)]];
-//    self.view conv
-    NSLog(@"%@",shit);
-    [self.mainScrollView addSubview:shit];
+    [self loadAnotherItemsWithNumber:50];
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,17 +93,58 @@
 #pragma -
 #pragma - 私有函数
 
+//找到最大的Y的下标
+- (NSInteger)findIndexOfMaxY
+{
+    NSInteger index = 0;
+    for (int i =0; i != 3; ++ i) {
+        if (maxThreePoint[i] > maxThreePoint[index]) {
+            index = i;
+        }
+    }
+    return index;
+}
+
+//找到最小的Y的下标
+- (NSInteger)findIndexOfMinY
+{
+    NSInteger index = 0;
+    for (int i = 0; i != 3; ++ i) {
+        if (maxThreePoint[i] < maxThreePoint[index]) {
+            index = i;
+        }
+    }
+    return index;
+}
+
 - (void)refreshScrollView
 {
-    
+//    脚丫（鸭）   手机（鸡）
 }
 
 - (void)loadAnotherItemsWithNumber:(NSInteger )count
 {
-    
+    for (int i = 0; i != count; ++ i) {
+        CGRect itemFrame = [DataHelper randomRect];
+        NSInteger minIndexOfY = [self findIndexOfMinY];
+        CGFloat topOffSetY = (maxThreePoint[minIndexOfY] == 0 ? 5 : 10);
+        itemFrame.origin = CGPointMake(minIndexOfY * kWaterItemWidth + 8 + minIndexOfY * 10, maxThreePoint[minIndexOfY] + topOffSetY);
+        ItemView *shit = [[ItemView alloc] initWithFrame:itemFrame];
+        [self.mainScrollView addObserver:shit forKeyPath:@"didVisibleFrameChanged" options:NSKeyValueObservingOptionNew context:NULL];
+        [self.mainScrollView addSubview:shit];
+        //更新
+        maxThreePoint[minIndexOfY] = CGRectGetMaxY(shit.frame);
+        [shit release];
+    }
+    [self.mainScrollView setContentSize:CGSizeMake(self.mainScrollView.contentSize.width, maxThreePoint[[self findIndexOfMaxY]] + 5)];
 }
 
 #pragma mark -
 #pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.mainScrollView setValue:NSStringFromCGPoint(scrollView.contentOffset) forKey:@"didVisibleFrameChanged"];
+}
 
 @end
