@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#include "HomeViewController.h"
 
 @implementation AppDelegate
 
@@ -22,6 +23,15 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    HomeViewController *homeViewController = [[HomeViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:homeViewController];
+    [nav.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
+    self.window.rootViewController = nav;
+    [homeViewController release];
+    [nav release];
+    
+    
     return YES;
 }
 

@@ -16,6 +16,8 @@
 		B1C24547178BA0E70052FEA8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C24546178BA0E70052FEA8 /* Default.png */; };
 		B1C24549178BA0E70052FEA8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C24548178BA0E70052FEA8 /* Default@2x.png */; };
 		B1C2454B178BA0E70052FEA8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C2454A178BA0E70052FEA8 /* Default-568h@2x.png */; };
+		B1C24554178BA1330052FEA8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C24553178BA1330052FEA8 /* HomeViewController.m */; };
+		B1C24557178BA44A0052FEA8 /* ItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C24556178BA44A0052FEA8 /* ItemView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,11 @@
 		B1C24546178BA0E70052FEA8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		B1C24548178BA0E70052FEA8 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		B1C2454A178BA0E70052FEA8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		B1C24552178BA1330052FEA8 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		B1C24553178BA1330052FEA8 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		B1C24555178BA44A0052FEA8 /* ItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemView.h; sourceTree = "<group>"; };
+		B1C24556178BA44A0052FEA8 /* ItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemView.m; sourceTree = "<group>"; };
+		B1C24558178BA4AB0052FEA8 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constant.h; path = ../Constant.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +58,7 @@
 		B1C24528178BA0E70052FEA8 = {
 			isa = PBXGroup;
 			children = (
+				B1C24551178BA11F0052FEA8 /* Classes */,
 				B1C2453A178BA0E70052FEA8 /* ReusedScrollView */,
 				B1C24533178BA0E70052FEA8 /* Frameworks */,
 				B1C24532178BA0E70052FEA8 /* Products */,
@@ -78,6 +86,7 @@
 		B1C2453A178BA0E70052FEA8 /* ReusedScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				B1C24558178BA4AB0052FEA8 /* Constant.h */,
 				B1C24543178BA0E70052FEA8 /* AppDelegate.h */,
 				B1C24544178BA0E70052FEA8 /* AppDelegate.m */,
 				B1C2453B178BA0E70052FEA8 /* Supporting Files */,
@@ -97,6 +106,18 @@
 				B1C2454A178BA0E70052FEA8 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B1C24551178BA11F0052FEA8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B1C24552178BA1330052FEA8 /* HomeViewController.h */,
+				B1C24553178BA1330052FEA8 /* HomeViewController.m */,
+				B1C24555178BA44A0052FEA8 /* ItemView.h */,
+				B1C24556178BA44A0052FEA8 /* ItemView.m */,
+			);
+			name = Classes;
+			path = ReusedScrollView/Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +187,8 @@
 			files = (
 				B1C24541178BA0E70052FEA8 /* main.m in Sources */,
 				B1C24545178BA0E70052FEA8 /* AppDelegate.m in Sources */,
+				B1C24554178BA1330052FEA8 /* HomeViewController.m in Sources */,
+				B1C24557178BA44A0052FEA8 /* ItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +268,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReusedScrollView/ReusedScrollView-Prefix.pch";
 				INFOPLIST_FILE = "ReusedScrollView/ReusedScrollView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -256,6 +280,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReusedScrollView/ReusedScrollView-Prefix.pch";
 				INFOPLIST_FILE = "ReusedScrollView/ReusedScrollView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -280,6 +305,7 @@
 				B1C24550178BA0E70052FEA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
